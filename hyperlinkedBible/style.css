@@ -1,0 +1,191 @@
+html, head, body  {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  overflow: hidden;
+  font-family: monospace;
+  text-align: center;
+  margin: 0px;
+}
+
+h1 {
+  font-size: 16pt;
+  font-weight: 300;
+  padding-top: 20px;
+  padding-bottom: 8px;
+  display: inline-block;
+  margin: 0px;
+}
+
+h1.sides {
+  width: 8vw;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+h1.center {
+  width: 79vw;
+}
+
+h1.modal-title {
+  padding:0;
+}
+
+h2 {
+  font-size: 12pt;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 8px;
+  display: inline-block;
+  margin: 0px;
+}
+
+p {
+  font-size: 10pt;
+  padding-bottom: 14px;
+  margin: 0px;
+}
+
+p.loading {
+  font-size: 10pt;
+  padding-top: 18%;
+  margin: 0px;
+}
+
+a {
+  color: black;
+  font-weight: bold;
+}
+
+span {
+  float: right;
+  width: 10%
+}
+
+#reset, #popup {
+  background-color: white;
+  border: 0px;
+  color: black;
+  padding: 0;
+  text-decoration: none;
+  font-size: 18pt;
+  font-weight: 100;
+  font-family: monospace;
+  text-align: center;
+  outline:none;
+}
+
+#reset:hover, #popup:hover {
+  cursor: pointer;
+  color: rgb(235, 55, 211);
+}
+
+div.modal-text {
+  text-align: left;
+  padding-left: 5%;
+  padding-right: 5%;
+
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: hidden; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.2);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 90px auto;
+  padding: 30px;
+  border: 0px;
+  width: 60%;
+}
+
+.close {
+  color: rgb(200,200,200);
+  font-size: 28px;
+  font-weight: normal;
+  background-color: white;
+  text-decoration: none;
+  outline: none;
+  border: 0px;
+  padding-bottom: 0px;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#chartContainer  {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+#chart {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+}
+
+.d1, .d2, .d3 {
+  fill: rgb(200,200,200);
+  stroke: rgb(200,200,200);
+  stroke-width: 2px;
+  stroke-opacity: 0;
+}
+
+.d1:hover, .d2:hover, .d3:hover {
+  cursor: none;
+  stroke-opacity: 1;
+  fill: rgb(235, 55, 211);
+  stroke: rgb(235, 55, 211);
+  stroke-width: 2px;
+}
+
+div.tooltip {	
+  position: absolute;			
+  text-align: center;			
+  width: 140px;					
+  height: 16px;					
+  padding: 2px;				
+  font: 12px monospace;	
+  color: white;	
+  background: black;	
+  border: 0px;			
+  pointer-events: none;			
+}
+
+.selection {
+  fill: black;
+}
+
+.endpoints {
+  fill: black;
+}
+
+.links{
+  stroke-width: 0.25px;
+  stroke: rgba(235, 55, 211, 0.60);
+}
+
+.cell {
+  fill: none;
+  stroke-width: 0.25px;
+  stroke: rgba(235, 55, 211, 0.60);
+}
