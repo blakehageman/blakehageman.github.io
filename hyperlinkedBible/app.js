@@ -66,6 +66,8 @@ const g = svg.append("g")
 const defs = svg.append("g")
             .attr("class", "defs");
 
+const verse_p = document.getElementById("verse");
+
 //create nodes with depth-first preOrder traversal
 let row_length = 0;
 let row_i = 0;
@@ -183,26 +185,6 @@ circles.each(function(d, i) {
         id: i
     })
 });
-
-//voronoi selection behavior
-// let voronoi = d3.voronoi()
-//     .x(function(d) {return d.x;})
-//     .y(function(d) {return d.y;})
-//     .extent([[0, 0], [width, height]]);
-
-// const polygons = voronoi(circleCoords).polygons()
-// circleCoords = circleCoords.map(function(d, i) {
-//     d.polygon = polygons[i];
-//     return d;
-// });
-
-// const cells = defs.selectAll("path")
-//         .data(circleCoords)
-//         .enter()
-//         .append("path")
-//         .attr("class", "cell")
-//         .attr("id", (d, i) => {return `num${i}`;})
-//         .attr("d", d => {return polygon(d.polygon);});
 
 //update circles with onclick selection behavior
 circles.each(function () {
@@ -379,20 +361,23 @@ function updateText() {
         d3.selectAll(".d3.selection").each(function() {
             rx = /[0-9]+/; //finds verse number
             verse = parseInt(d3.select(this).attr("id").match(rx)); 
+            verseInfo = getVerse(verse);
+            OsisRef = verseInfo[0].split(".");
+            verseText = verseInfo[1];
             if (text.length===0) {
-                verseInfo = getVerse(verse);
-                OsisRef = verseInfo[0].split(".");
-                verseText = verseInfo[1];
                 text = `${getBook(OsisRef[0])} ${OsisRef[1]}:${OsisRef[2]} KJV: ${verseText}`;
             }
-            else {}
+            else {
+                text = text + "<br>"+ `${getBook(OsisRef[0])} ${OsisRef[1]}:${OsisRef[2]} KJV: ${verseText}`;
+            }
         });
     }
     else { //no selection
         text = "click on a node"
     }
-    return d3.select("#verse")
-        .text(text)
+    verse_p.innerHTML = text;
+    //return d3.select("#verse")
+        //.text(text)
 }
 
 function getBook(key) {
