@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     background: #fff;
     color: black;
@@ -36,10 +41,13 @@ h3 {
 }
 
 h4 {
-    margin: 0.5rem 0rem;
+    margin: 0rem 0rem;
     font-weight: normal;
     font-size: 1rem;
     text-align: center;
+    line-height: 100%;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
 }
 
 p {
@@ -52,6 +60,11 @@ p {
     padding: 4rem 0rem 0rem 0rem;
     width: auto;
     margin: 0 2rem;
+}
+
+.container-entry {
+    padding: inherit;
+    margin: inherit;
 }
 
 .form {
@@ -88,6 +101,53 @@ p {
     /* background-color: rgb(206, 206, 206); */
     background-color: #ecdbc0;
     cursor: pointer;
+}
+
+.fab-container {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 999;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+}
+
+.fab-icon-holder {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: rgb(0, 0, 0);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    opacity: 1;
+    margin: 0px;
+    padding: 0px;
+}
+
+.fab-icon-holder:hover {
+    opacity: 0.8;
+}
+
+#plus-icon {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    height: 92%;
+    font-weight: normal;
+    font-size: 45px;
+}
+
+#back-icon {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    height: 96%;
+    font-weight: normal;
+    font-size: 45px;
 }
 
 @font-face {

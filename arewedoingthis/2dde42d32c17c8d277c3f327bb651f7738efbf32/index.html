@@ -13,6 +13,11 @@
     <div id="entries" class="container">
         <h1>TEST DATA</h1>
     </div>
+    <div class="fab-container">
+        <div onclick = "location.href='submit.html';" class="fab-icon-holder">
+            <h4 id="plus-icon">+</h4>
+        </div>
+    </div>
     
     <script>
         function loadData(){
@@ -39,7 +44,6 @@
         }
 
         function addEntry(entry) {
-            console.log(entry);
             let div = document.createElement("div");
             div.className = "container-entry";
 
@@ -47,24 +51,39 @@
             let titleText = document.createTextNode(entry['title']);
             title.appendChild(titleText);
 
-            let author = document.createElement("h3");
-            let authorText = document.createTextNode(entry['author']);
-            author.appendChild(authorText);
-
-            let date = document.createElement("h3");
-            let dateText = document.createTextNode(entry['timestamp']);
-            date.appendChild(dateText);
+            let byline = document.createElement("h3");
+            let bylineText = document.createTextNode("written by " + entry['author'] + " on "+ parseTimestamp(entry['timestamp']));
+            byline.appendChild(bylineText);
 
             let body = document.createElement("p");
             let bodyText = document.createTextNode(entry['body']);
             body.appendChild(bodyText);
 
             div.appendChild(title);
-            div.appendChild(author);
-            div.appendChild(date);
+            div.appendChild(byline);
             div.appendChild(body);
 
             document.getElementById("entries").appendChild(div);
+        }
+
+        function parseTimestamp(timestamp) {
+            let months = {
+                "01": "January",
+                "02": "February",
+                "03": "March",
+                "04": "April",
+                "05": "May",
+                "06": "June",
+                "07": "July",
+                "08": "August",
+                "09": "September",
+                "10": "October",
+                "11": "November",
+                "12": "December"
+            };
+
+            let reformatted = months[timestamp.substring(5,7)] + " " + timestamp.substring(8,10) + ", " + timestamp.substring(0,4)
+            return reformatted;
         }
 
         loadData();
