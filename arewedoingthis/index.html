@@ -15,6 +15,7 @@
 
 body {
 	background-color: white;
+	font-family: monospace;
 }
 
 .box {
@@ -86,6 +87,45 @@ div.vertical {
    text-align: center;
 }
 
+input {
+	width: 150px;
+	padding: 0.4rem;
+	margin: 0.4rem;
+	font-family: inherit;
+	font-weight: bold;
+	border:none;
+	text-align: center;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+input:focus {
+	outline: none;
+}
+
+button {
+    width: 150px;
+	padding: 0.4rem;
+	margin: 0.4rem;
+	border: none;
+	background-color: #850039;
+	font-family: inherit;
+    box-shadow: none;
+    color: white;
+    font-weight: bold;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+button:hover {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+
 </style>
 
 <body>
@@ -97,9 +137,9 @@ div.vertical {
 					<div class="heart">
 						<img src="heart.png" width="150px" height="150px">
 					</div>
-					<input style="margin: 16px; text-align: center;" id="password" type="password" placeholder="password" /> <br />
-					<button id="loginbutton" type="button">Enter</button>
-					<p id="wrongPassword" style="display: none">wrong password</p>
+					<input id="password" type="password" placeholder="password" /> <br />
+					<button id="loginbutton" type="button">enter</button>
+					<p id="wrongPassword" style="display: none">try again</p>
 				</div>
 			</div>
 		</div>
@@ -136,7 +176,7 @@ div.vertical {
 				parent.location.hash= hash;
 
 				//$("#wrongPassword").show();
-				$("#password").attr("placeholder","wrong password");
+				$("#password").attr("placeholder","try again");
 				$("#password").val("");
 			}
 		});
