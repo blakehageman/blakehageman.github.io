@@ -14,15 +14,11 @@
 <style>
 
 body {
-
-	background-image: url('grunge_patterns.jpg');
-	background-attachment: fixed;
-	color: #333;
+	background-color: white;
 }
 
 .box {
 	border-radius: 3px;
-	background: rgba(101, 101, 101, 0.7); margin: auto; padding: 12px;
 }
 
 .lightbox {
@@ -32,10 +28,34 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(10, 10, 10, 0.8);
+	background: #ffb7b7;
 	text-align: center;
 	margin: auto;
 
+}
+
+.heart {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: pulse 2s infinite;
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+	padding-bottom: 1rem;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+	}
+
+	70% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0.95);
+	}
 }
 
 div.horizontal {
@@ -52,17 +72,17 @@ div.vertical {
 }
 
 ::-webkit-input-placeholder {
-   color: #955;
+   color: black;
    text-align: center;
 }
 
 ::-moz-placeholder {
-   color: #955;
+   color: black;
    text-align: center;
 }
 
 :-ms-input-placeholder {
-   color: #955;
+   color: black;
    text-align: center;
 }
 
@@ -74,6 +94,9 @@ div.vertical {
 		<div class="horizontal">
 			<div class="vertical">
 				<div class="box">
+					<div class="heart">
+						<img src="heart.png" width="150px" height="150px">
+					</div>
 					<input style="margin: 16px; text-align: center;" id="password" type="password" placeholder="password" /> <br />
 					<button id="loginbutton" type="button">Enter</button>
 					<p id="wrongPassword" style="display: none">wrong password</p>
