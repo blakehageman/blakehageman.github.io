@@ -70,12 +70,18 @@ p {
     margin: inherit;
 }
 
+#newEntry {
+    padding: inherit;
+    margin: inherit;
+}
+
 .form {
     display: inline;
     height: 82px;
     margin: 0px;
     font-family: 'iA Writer Duo', monospace;
     font-size: 1rem;
+    padding-bottom: 180px;
 }
 
 .form label {
@@ -83,27 +89,44 @@ p {
     font-size: 1.2rem;
 }
 
-.form input, select, textarea{
+.form input, select, textarea {
     font-family: inherit;
     padding: 1rem 1rem;
     margin: 1.5rem 0rem;
-    width: auto;
     font-size: 1.2rem;
     width: 100%;
-    border-color: #dadada;
-    border-width: 2px;
-    border-style: solid;
+    text-justify: auto;
+    border-width: 0px;
+    background-color: #f1f1f1;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.form input:focus, select:focus, textarea:focus {
+    border-width: 0px;
+    border-radius: 0px;
+    background: #fcd8d8;
+}
+
+.form input#body {
+    height: 400px;
+    overflow: scroll;
 }
 
 .form input[type="button"]{
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(0, 0, 0);
+    border-color: black;
     box-shadow: none;
+    color: white;
+    font-weight: bold;
 }
 
 .form input[type="button"]:hover{
-    /* background-color: rgb(206, 206, 206); */
-    background-color: #ecdbc0;
+    background-color: #ffb7b7;
+    border-color: #ffb7b7;
     cursor: pointer;
+    color: black;
 }
 
 .fab-container {
@@ -125,10 +148,12 @@ p {
     opacity: 1;
     margin: 0px;
     padding: 0px;
+    color: white;
 }
 
 .fab-icon-holder:hover {
-    opacity: 0.8;
+    background: #ffb7b7;
+    color:black;
 }
 
 #plus-icon {
@@ -136,7 +161,7 @@ p {
     align-items:center;
     justify-content: center;
     text-align: center;
-    color: white;
+    color: inherit;
     height: 92%;
     font-weight: normal;
     font-size: 45px;
@@ -147,7 +172,7 @@ p {
     align-items:center;
     justify-content: center;
     text-align: center;
-    color: white;
+    color: inherit;
     height: 96%;
     font-weight: normal;
     font-size: 45px;
@@ -181,7 +206,7 @@ p {
     scrollbar-color: black white;
   }
   *::-webkit-scrollbar {
-    width: 12px;
+    width: 6px;
   }
   *::-webkit-scrollbar-track {
     background: #f7f7f700;
@@ -189,7 +214,7 @@ p {
   *::-webkit-scrollbar-thumb {
     background-color: #000000;
     border-radius: 0px;
-    border: 3px solid #f7f7f7
+    border: 0px solid rgb(255, 255, 255)
   }
 
 @media (min-width: 900px) {
@@ -202,3 +227,10 @@ p {
         max-width: 1000px;
     }
 }
+
+::selection {
+    background: #ffb7b7; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: #ffb7b7; /* Gecko Browsers */
+  }

@@ -33,17 +33,23 @@
 </head>
 <body>
     <div class="container">
-        <h1>You are currently doing this.</h1>
-        <form id="newPost" method="post" class="form">
-            <label for="author">author:</label><br>
-            <input type="text" id="author" name="author"><br>
-            <label for="title">title:</label><br>
-            <input type="text" id="title" name="title"><br>
-            <label for="body">body:</label><br>
-            <input type="text" id="body" name="body"><br>
-            <input type="button" value="Submit" id="btnsubmit" onclick="submitForm()"></input>
-        </form>
+        <h1>We're doing this.</h1>
+        <div id="newEntry">
+            <form id="newPost" method="post" class="form">
+                <label for="author">author:</label><br>
+                <select id="author" name="author">
+                    <option value="Katherine">Katherine</option>
+                    <option value="Blake">Blake</option>
+                </select>
+                <label for="title">title:</label><br>
+                <input type="text" id="title" name="title"><br>
+                <label for="body">entry:</label><br>
+                <textarea id="body" name="body" rows="10"></textarea><br>
+                <input type="button" value="submit" id="btnsubmit" onclick="submitForm()"></input>
+            </form>
+        </div>
     </div>
+
     <div class="fab-container">
         <div onclick = "location.href='index.html';" class="fab-icon-holder">
             <h4 id="back-icon" class="icon">←</h4>
