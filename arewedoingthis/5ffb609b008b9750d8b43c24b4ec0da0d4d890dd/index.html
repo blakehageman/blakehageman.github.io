@@ -38,7 +38,6 @@
 
         function populatePage(arrayData){
             let entries = arrayData['data'];
-            //console.log(entries);
             
             for (var i = entries.length-1; i >= 0; i--) {
                 addEntry(entries[i]);
@@ -63,13 +62,22 @@
             let bylineText = document.createTextNode("written by " + entry['author'] + " on "+ parseTimestamp(entry['timestamp']));
             byline.appendChild(bylineText);
 
-            let body = document.createElement("p");
-            let bodyText = document.createTextNode(entry['body']);
-            body.appendChild(bodyText);
+            let bodyBlock = document.createElement("div");
+            let paragraphs = entry['body'].split(new RegExp('\r?\n','g'));
+
+            for (var i = 0; i < paragraphs.length; i++) {
+                let paragraph = paragraphs[i];
+                if (paragraph.length>0) {
+                    let body = document.createElement("p");
+                    let bodyText = document.createTextNode(paragraph);
+                    body.appendChild(bodyText);
+                    bodyBlock.appendChild(body);
+                }
+            }
 
             div.appendChild(title);
             div.appendChild(byline);
-            div.appendChild(body);
+            div.appendChild(bodyBlock);
 
             document.getElementById("entries").appendChild(div);
         }
