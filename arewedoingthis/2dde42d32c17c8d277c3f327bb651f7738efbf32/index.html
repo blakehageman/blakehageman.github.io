@@ -11,12 +11,14 @@
 </head>
 <body>
     <div id="entries" class="container">
-        <h1>TEST DATA</h1>
+        <h1>Are we doing this?</h1><br>
     </div>
     <div class="fab-container">
         <div onclick = "location.href='submit.html';" class="fab-icon-holder">
             <h4 id="plus-icon">+</h4>
         </div>
+    </div>
+    <div id="footer">
     </div>
     
     <script>
@@ -41,6 +43,12 @@
             for (var i = 0; i < entries.length; i++) {
                 addEntry(entries[i]);
             }
+
+
+            let footer = document.createElement("h4");
+            let footerText = document.createTextNode("For Katherine, 14 Feb 2022");
+            footer.appendChild(footerText);
+            document.getElementById("footer").appendChild(footer);
         }
 
         function addEntry(entry) {
