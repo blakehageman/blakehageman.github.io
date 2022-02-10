@@ -1,0 +1,135 @@
+html {
+    background: #fff;
+    color: black;
+    font-family: 'iA Writer Duo', monospace;
+    font-size: 75%;
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-family: inherit;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: normal;
+    text-align: center;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+h3 {
+    font-size: 1.8rem;
+    text-align: left;
+    line-height: 1.6;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+
+h4 {
+    margin: 0.5rem 0rem;
+    font-weight: normal;
+    font-size: 1rem;
+    text-align: center;
+}
+
+p {
+    font-size: 1.2rem;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.container {
+    padding: 4rem 0rem 0rem 0rem;
+    width: auto;
+    margin: 0 2rem;
+}
+
+.form {
+    display: inline;
+    height: 82px;
+    margin: 0px;
+    font-family: 'iA Writer Duo', monospace;
+    font-size: 1rem;
+}
+
+.form label {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.form input, select, textarea{
+    font-family: inherit;
+    padding: 1rem 1rem;
+    margin: 1.5rem 0rem;
+    width: auto;
+    font-size: 1.2rem;
+    width: 100%;
+    border-color: #dadada;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.form input[type="button"]{
+    background-color: rgb(224, 224, 224);
+    box-shadow: none;
+}
+
+.form input[type="button"]:hover{
+    /* background-color: rgb(206, 206, 206); */
+    background-color: #ecdbc0;
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'iA Writer Duo';
+    src: url(fonts/iAWriterDuoS-Regular.woff2);
+}
+  
+@font-face {
+    font-family: 'iA Writer Duo';
+    src: url(fonts/iAWriterDuoS-Bold.woff2);
+    font-weight: bold;
+}
+  
+@font-face {
+    font-family: 'iA Writer Duo';
+    src: url(fonts/iAWriterDuoS-Italic.woff2);
+    font-style: italic;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: black white;
+  }
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #f7f7f700;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 0px;
+    border: 3px solid #f7f7f7
+  }
+
+@media (min-width: 900px) {
+    html {
+        font-size: 100%;
+    }
+    .container {
+        margin: 0px auto;
+        padding: 7rem 3rem 0rem 3rem;
+        max-width: 1000px;
+    }
+}

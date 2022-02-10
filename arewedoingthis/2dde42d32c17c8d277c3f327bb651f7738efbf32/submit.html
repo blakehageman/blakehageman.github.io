@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Are We Doing This?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function subForm(){
+            $.ajax({
+                url:'https://script.google.com/macros/s/AKfycby2BLIGnLalSEkA13TMLPzYv3o8O5GXsJan3KtJFqrrMYRzKctRK82s56nrMlaYf9a9mQ/exec',
+                type:'post',
+                data:$("#newPost").serializeArray(),
+                success: function(){
+                    alert("Data submitted successfully!")
+                },
+                error: function(){
+                    alert("Error: data not submitted.")
+                }
+            })
+        }
+        function submitForm(){
+            subForm();
+            document.getElementById("newPost").reset();
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>TEST FORM</h1>
+        <form id="newPost" method="post" class="form">
+            <label for="author">author:</label><br>
+            <input type="text" id="author" name="author"><br>
+            <label for="title">title:</label><br>
+            <input type="text" id="title" name="title"><br>
+            <label for="body">body:</label><br>
+            <input type="text" id="body" name="body"><br>
+            <input type="button" value="Submit" id="btnsubmit" onclick="submitForm()"></input>
+        </form>
+    </div>
+</body>
+</html>

@@ -5,9 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-    <title>We are.</title>
+    <title>Are We Doing This?</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
+    <div id="entries" class="container">
+        <h1>TEST DATA</h1>
+    </div>
     
+    <script>
+        function loadData(){
+            $.ajax({
+                type:"GET", 
+                url: "https://script.google.com/macros/s/AKfycby2BLIGnLalSEkA13TMLPzYv3o8O5GXsJan3KtJFqrrMYRzKctRK82s56nrMlaYf9a9mQ/exec", 
+                success: function(data) {
+                        populatePage(data);
+                    }, 
+                error: function(jqXHR, textStatus, errorThrown) {
+                        alert(jqXHR.status);
+                    },
+            dataType: "json"
+            });
+        }
+
+        function populatePage(arrayData){
+            let entries = arrayData['data'];
+            console.log(entries);
+            
+            for (var i = 0; i < entries.length; i++) {
+                addEntry(entries[i]);
+            }
+        }
+
+        function addEntry(entry) {
+            console.log(entry);
+            let div = document.createElement("div");
+            div.className = "container-entry";
+
+            let title = document.createElement("h2");
+            let titleText = document.createTextNode(entry['title']);
+            title.appendChild(titleText);
+
+            let author = document.createElement("h3");
+            let authorText = document.createTextNode(entry['author']);
+            author.appendChild(authorText);
+
+            let date = document.createElement("h3");
+            let dateText = document.createTextNode(entry['timestamp']);
+            date.appendChild(dateText);
+
+            let body = document.createElement("p");
+            let bodyText = document.createTextNode(entry['body']);
+            body.appendChild(bodyText);
+
+            div.appendChild(title);
+            div.appendChild(author);
+            div.appendChild(date);
+            div.appendChild(body);
+
+            document.getElementById("entries").appendChild(div);
+        }
+
+        loadData();
+    </script>
 </body>
 </html>
