@@ -26,7 +26,7 @@
         function loadData(){
             $.ajax({
                 type:"GET", 
-                url: "https://script.google.com/macros/s/AKfycby2BLIGnLalSEkA13TMLPzYv3o8O5GXsJan3KtJFqrrMYRzKctRK82s56nrMlaYf9a9mQ/exec", 
+                url: "https://script.google.com/macros/s/AKfycbwNMH_Zqnfbe08hSUU_WqtInmN4FkzFw-3snOeVO5bvP-sPpym8HgdroZCSkkW5mxzA_Q/exec", 
                 success: function(data) {
                         populatePage(data);
                     }, 
@@ -39,7 +39,6 @@
 
         function populatePage(arrayData){
             let entries = arrayData['data'];
-            
             for (var i = entries.length-1; i >= 0; i--) {
                 addEntry(entries[i]);
             }
