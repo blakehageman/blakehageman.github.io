@@ -124,10 +124,9 @@ p {
 }
 
 .form input[type="button"]:hover{
-    background-color: #ffb7b7;
-    border-color: #ffb7b7;
+    background-color: #850039;
+    border-color: #850039;
     cursor: pointer;
-    color: black;
 }
 
 .fab-container {
