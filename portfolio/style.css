@@ -81,20 +81,22 @@ img.portrait {
 }
 
 .header {
-    animation: changeBg 30s infinite;
     display: grid;
     place-items: center;
-    background-image: url("assets/move-america_banner1.jpg");
-    background-color: gray;
     background-size: cover;
     background-position: center;
     align-items: center;
-    color: white;
+    color: black;
     height: calc(100vh);
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
     width: 100%;
+}
+
+.header h1{
+    cursor: pointer;
+    transition: color 0.5s ease-in;
 }
 
 .header h2{
@@ -105,13 +107,24 @@ img.portrait {
 }
 
 .header a{
-    color: rgba(255, 255, 255, .6) !important;
+    color: rgba(0, 0, 0) !important;
 }
 
 .header a:hover{
-    color: rgba(255, 255, 255, 1) !important;
+    color: #9c6000 !important;
 }
 
+.main-menu-container{
+    display: grid;
+    grid-template-columns: .333fr .333fr .333fr;
+    grid-template-rows: auto;
+    text-align: center;
+}
+
+.main-menu {
+    font-size: 1.4em;
+    text-align: center;
+}
 
 @keyframes changeBg{
     0%,100%  {background-image: url("assets/move-america_banner1.jpg");}
@@ -295,7 +308,7 @@ footer {
 }
 
 .spacer {
-    padding-top:15em;
+    padding-top:6em;
 }
 
 .nav {

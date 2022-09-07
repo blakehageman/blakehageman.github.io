@@ -45,12 +45,15 @@ context: academic, personal-->
     <nav id="nav-placeholder" class="nav">
     </nav>
     <div class="header">
-        <h1>BLAKE HAGEMAN</h1>
+      <div>
+        <h1 class="animation" id="siteName">Blake Hageman</h1>
         <div class="main-menu-container">
-          <a class="main-menu" href="projects.html">projects</a>
-          <a class="main-menu" href="writing.html">writing</a>
-          <a class="main-menu" href="information.html">information</a>
+          <a class="main-menu" href="/projects.html">projects</a>
+          <a class="main-menu" href="/writing.html">writing</a>
+          <a class="main-menu" href="/information.html">information</a>
         </div>
+        <div class="spacer"></div>
+      </div>
     </div>
     <script src='/nav.js'></script>
     <script>
@@ -64,6 +67,18 @@ context: academic, personal-->
 					images[i].src = preload.arguments[i]
 				}
 			}
+
+      var siteName = document.getElementById("siteName");
+      siteName.onclick = randomColor;
+
+      function randomColor() {
+        element = document.getElementById("siteName");
+        var r = Math.floor(Math.random()*256);
+        var g = Math.floor(Math.random()*256);
+        var b = Math.floor(Math.random()*256);
+        element.style.color = "rgb("+r+","+g+","+b+")";
+      }
+
 			preload(
 				"/assets/move-america_banner2.jpg",
 				"/assets/move-america_banner3.jpg",
