@@ -1,0 +1,283 @@
+html, head, body {
+  margin: 0px;
+  padding: 0px;
+  background: #f7f7f7;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  background:  #f7f7f7;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 90vw;
+  grid-template-areas:
+    "map"
+    "content"
+  ;
+  row-gap: 0px;
+  column-gap: 0px;
+}
+
+::-moz-selection {background:#ecdbc0;}
+::selection {background: #ecdbc0;}
+
+#reset, #zoom {
+  background-color: transparent;
+  border: 0px;
+  color: black;
+  padding: 0px 0px 1rem 0px;
+  margin: 0px;
+  text-decoration: none;
+  font-family: monospace;
+  outline: none; 
+}
+
+#reset:hover, #zoom:hover{
+  cursor: pointer;
+  color:#9c6000;
+}
+
+h1 {
+  font-family: 'iA Writer Duo', monospace;
+  font-size: 20pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'iA Writer Duo', monospace;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+h3 {
+  font-family: 'iA Writer Duo', monospace;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+p {
+  font-family: 'iA Writer Duo', monospace;
+  font-weight: normal;
+  font-size: 10pt;
+}
+
+h1, h2, h3, p {
+  color: rgb(0, 0, 0);
+}
+
+ul {
+  display: inline-block;
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  font-family: 'iA Writer Duo', monospace;
+  font-weight: normal;
+  font-size: 10pt;
+}
+
+.typology-li {
+  margin-bottom: 2px;
+}
+
+.col {
+  flex:1;
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  display:flex;
+  padding: 0;
+  margin: 0;
+}
+
+.span-right {
+  float:right;
+}
+
+div.placeholder {
+  padding:0;
+  margin:0;
+}
+
+g {
+  font-family: 'iA Writer Duo', monospace;
+}
+
+#map {
+  grid-area: map;
+  height: 100%;
+  width: 100%;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
+  z-index: 0;
+  background: white;
+  border: none;
+}
+
+#search {
+  margin: 0px;
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+}
+
+.geocoder {
+  z-index: 1;
+  width: calc(100% - 10px);
+  padding: 5px;
+}
+
+.mapboxgl-ctrl-geocoder {
+  min-width: calc(100%-8px) !important;
+  width: 100% !important;
+  box-shadow: 0 0 5px 1px rgba(0,0,0,0) !important;
+  font-family: 'iA Writer Duo', monospace !important;
+  border-radius: 0px !important;
+}
+
+.mapboxgl-map {
+  font-family: 'iA Writer Duo', monospace !important;
+}
+
+a.mapboxgl-ctrl-logo {
+  width: 120px !important;
+  height: 30px !important;
+  margin: 0 0 -12px -2px !important;
+  background-image: url(assets/ma_logo.svg) !important;
+}
+
+.marker {
+  display: block;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+}
+
+#data-layers {
+  list-style: square inside;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+#content {
+  visibility: collapse;
+}
+
+#welcome {
+  visibility: visible;
+}
+
+.panel {
+  grid-area: content;
+  background:white;
+  margin: 0px;
+  padding: 0px;
+  position: sticky;
+  box-shadow: 0 0 5px 1px rgba(0,0,0,.2);
+  overflow-y: scroll;
+}
+
+.card {
+  border-bottom-style: solid;
+  border-width: 1px 0;
+  border-color: rgb(223, 223, 223);
+}
+
+.card, .card-no-border {
+  padding: 0 20px 0 20px;
+}
+
+a:link {
+  text-decoration: none;
+  color: #9c6000;
+}
+
+a:visited {
+  color: #9c6000;
+}
+
+a:hover {
+  color: #000;
+}
+
+@media (min-width: 640px){
+  .container {
+    --sidebar-width: 360px;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "search map"
+      "content map";
+    column-gap: 1px;
+  }
+
+  #search {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    grid-area: search;
+    position: relative !important;
+    background: white;
+    border-bottom-style: solid;
+    border-color: rgb(223, 223, 223);
+    border-width: 1px 0;
+  }
+
+  .geocoder {
+    width: calc(100% - 16px) !important;
+    padding: 0px !important;
+    padding-left: 8px !important;
+  }
+
+  .panel {
+    box-shadow: none !important;
+  }
+}
+
+@media (min-width: 900px) {
+  a.mapboxgl-ctrl-logo {
+    width: 160px !important;
+    height: 40px !important;
+    margin: 0 0 -18px -2px !important;
+  }
+}
+
+@font-face {
+  font-family: 'iA Writer Duo';
+  src: url(/fonts/iAWriterDuoS-Regular.woff2);
+}
+
+@font-face {
+  font-family: 'iA Writer Duo';
+  src: url(/fonts/iAWriterDuoS-Bold.woff2);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'iA Writer Duo';
+  src: url(/fonts/iAWriterDuoS-Italic.woff2);
+  font-style: italic;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: black white;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 0, 0);
+  border-radius: 0px;
+  border: 1px solid rgb(255, 254, 254);
+}

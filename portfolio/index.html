@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal website of Blake Hageman">
+    <meta name="author" content="Blake Hageman">
+    <title>Blake Hageman</title>
+    <link href='/style.css' rel='stylesheet' />
+    <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TBP2MYKJD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3TBP2MYKJD');
+    </script>
+  </head>
+  <body>
+    <!-- landing page is text over interactive image, with three buttons:
+
+projects
+	gallery of all, sorted by tags.
+
+writing
+	gallery of all, sorted by tags.
+
+information
+	photo
+	plain text resume
+	contact
+
+nav menu is subtle on page, contains entire sitemap
+	
+tags:
+
+discipline: architecture, cartography, programming, urban planning, art
+context: academic, personal-->
+    <div class="nav-toggle">
+        <div class="nav-toggle-bar"></div>
+    </div>
+    <nav id="nav-placeholder" class="nav">
+    </nav>
+    <div class="header">
+        <h1>BLAKE HAGEMAN</h1>
+        <div class="main-menu-container">
+          <a class="main-menu" href="projects.html">projects</a>
+          <a class="main-menu" href="writing.html">writing</a>
+          <a class="main-menu" href="information.html">information</a>
+        </div>
+    </div>
+    <script src='/nav.js'></script>
+    <script>
+      $(function(){
+        $("#nav-placeholder").load("/nav.html");
+      });
+      var images = new Array()
+			function preload() {
+				for (i = 0; i < preload.arguments.length; i++) {
+					images[i] = new Image()
+					images[i].src = preload.arguments[i]
+				}
+			}
+			preload(
+				"/assets/move-america_banner2.jpg",
+				"/assets/move-america_banner3.jpg",
+        "/assets/move-america_banner4.jpg",
+        "/assets/move-america_banner5.jpg",
+        "/assets/move-america_banner6.jpg",
+			)
+    </script>
+  </body>
+</html>
