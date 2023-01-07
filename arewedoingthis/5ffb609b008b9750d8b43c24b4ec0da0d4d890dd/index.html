@@ -26,8 +26,9 @@
         function loadData(){
             $.ajax({
                 type:"GET", 
-                url: "https://script.google.com/macros/s/AKfycbwNMH_Zqnfbe08hSUU_WqtInmN4FkzFw-3snOeVO5bvP-sPpym8HgdroZCSkkW5mxzA_Q/exec", 
+                url: "https://script.google.com/macros/s/AKfycbyts56AQSF4tsOu2Ga9SP7_ppu6VdKxpUtUYqmWktS3onFr-jD_TxUD-2_t24yZ657n/exec", 
                 success: function(data) {
+                        console.log(data);
                         populatePage(data);
                     }, 
                 error: function(jqXHR, textStatus, errorThrown) {
