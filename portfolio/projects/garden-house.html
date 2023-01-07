@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="description" content=""> -->
+    <meta name="author" content="Blake Hageman">
+    <title>Garden House | Blake Hageman</title>
+    <link href='/style.css' rel='stylesheet' />
+</style>
+    <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TBP2MYKJD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3TBP2MYKJD');
+    </script>
+</head>
+<body>
+  <div class="nav-toggle">
+      <div class="nav-toggle-bar"></div>
+  </div>
+  <nav id="nav-placeholder" class="nav">
+  </nav>
+  <div class="container">
+    <section>
+      <div class="image-gallery">
+        <a href="/projects/images/Microhome Competition Final Board.jpg" target="_blank" rel="noopener noreferrer">
+          <img class="banner" src="/projects/images/Microhome Competition Final Board.jpg"/>
+        </a>
+      </div>
+    </section>
+    <section class="container-section">
+      <div class="section-head">
+          <p><strong>Context</strong></p>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div></div>
+          <div>
+            <p>Submitted in December 2022 for Buildner's <a href="https://architecturecompetitions.com/microhome5/" target="_blank" rel="noopener noreferrer">MICROHOME 5</a> design competition. Winners not yet announced.</p><p>Competition brief: design "an off-grid modular structure to accomodate a hypothetical young professional couple. The only requirement is that the structure's total floor area [excludes outdoor spaces] does not exceed 25 m<sup>2</sup>."</p> 
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-section">
+      <div class="section-head">
+          <p><strong>Description</strong></p>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div class="toggleGridLeft">
+          </div>
+          <div class="toggleGridRight">
+            <p><strong>Garden House</strong> is a small, affordable, low-tech sanctuary that brings nature and beauty to a utility building typology. Designed for both standalone and infill sites, the structure uses readily-available materials and methods to create a high performing shell with bright and airy interiors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="spacer"></div>
+    <section class="container-section">
+      <div class="section-head">
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div></div>
+          <div>
+            <p>© 2022 by Blake Hageman</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src='/nav.js'></script>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("/nav.html");
+    });
+
+    function toggleDiv(id) { //toggle div using dropdown button
+      document.getElementById(id).classList.toggle('show');    
+      console.log("in function");
+    }
+  </script>
+</body>
+</html>

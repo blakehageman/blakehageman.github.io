@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Blake Hageman">
+    <title>About | Blake Hageman</title>
+    <link href='/style.css' rel='stylesheet' />
+</style>
+    <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TBP2MYKJD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3TBP2MYKJD');
+    </script>
+</head>
+<body>
+  <div class="nav-toggle">
+      <div class="nav-toggle-bar"></div>
+  </div>
+  <nav id="nav-placeholder" class="nav">
+  </nav>
+  <div class="container">
+    <section class="container-section">
+      <div class="section-head">
+          <p id="myName"><strong>Blake Hageman</strong></p>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div></div>
+          <div>
+            <p>Born 1997 in Wheat Ridge, CO.<br>Registered 2023 as licensed architect in Chicago, IL.<br>Married 2024 to Katherine Nagler.<br>Not dead yet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-section">
+      <div class="section-head">
+          <p><strong>Education</strong></p>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div class="toggleGridLeft">
+            <p>
+              <button class="toggler" onclick="toggleDiv('IIT')">+</button>
+            </p>
+          </div>
+          <div class="toggleGridRight">
+            <p><strong>Bachelor of Architecture  |  Illinois Institute of Technology</strong>
+              <br>August 2015 — May 2020  |  Chicago, IL</p>
+            <ul class="resume" id="IIT">
+              <li>Minors in Structural Engineering, Policy and Ethics, and Computer Science</li>
+              <li>Summa cum laude honors, 3.97 GPA</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-section">
+      <div class="section-head">
+          <p><strong>Experience</strong></p>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div class="toggleGridLeft">
+            <!-- <p>
+              <button class="toggler" onclick="toggleDiv('DDA')">+</button>
+            </p> -->
+          </div>
+          <div class="toggleGridRight">
+            <p><strong>Architectural Designer  |  Dirk Denison Architects</strong>
+              <br>May 2021 — present  |  Chicago, IL</p>
+            <ul class="resume" id="DDA">
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div class="toggleGridLeft">
+            <p>
+              <button class="toggler" onclick="toggleDiv('MA')">+</button>
+            </p>
+          </div>
+          <div class="toggleGridRight">
+            <p><strong>Cofounder  |  Move America, LLC</strong>
+              <br>October 2020 — present  |  Chicago, IL</p>
+            <ul class="resume" id="MA">
+              <li>Lead vision and execution architectural design, editorial, and web development projects</li>
+              <li>Organized business administration and operations, including finances, intellectual property, and information technology</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div class="toggleGridLeft">
+            <p>
+              <button class="toggler" onclick="toggleDiv('SWF')">+</button>
+            </p>
+          </div>
+          <div class="toggleGridRight">
+            <p><strong>Consulting Designer  |  Sweetwater Foundation</strong>
+              <br>November 2020 — March 2021  |  Chicago, IL</p>
+            <ul class="resume" id="SWF">
+              <li>Supported development of collective community vision via production of graphics, maps, and other visual representations</li>
+              <li>Produced architectural drawings and visualizations for church historical preservation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div class="toggleGridLeft">
+            <p>
+              <button class="toggler" onclick="toggleDiv('SOM')">+</button>
+            </p>
+          </div>
+          <div class="toggleGridRight">
+            <p><strong>Architectural Intern  |  Skidmore, Owings & Merrill</strong>
+              <br>March 2018 — November 2019  |  Chicago, IL</p> 
+            <ul class="resume" id="SOM">
+              <li>Created planetary-scale GIS mapping for internal urban planning research informing firm-wide sustainability initiatives</li>
+              <li>Produced architectural drawings and design visualizations for design development of 20,000m<sup>2</sup> conference center at the base of a supertall highrise project in Xixian, China</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div class="toggleGridLeft">
+            <p>
+              <button class="toggler" onclick="toggleDiv('FBD')">+</button>
+            </p>
+          </div>
+          <div class="toggleGridRight">
+            <p><strong>Freedom By Design Director  |  iitAIAS</strong>
+              <br>August 2017 — May 2019  |  Chicago, IL</p> 
+            <ul class="resume" id="FBD">
+              <li>Led teams of 12-18 architecture students in the design and construction of pro bono projects for community partners</li>
+              <li>Built and maintained relationships with partner organizations Uptown Baptist Church [2017-18 project] and Sweet Water Foundation [2018-19 project]</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-section">
+      <div class="section-head">
+          <p><strong>Awards</strong></p>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div class="toggleGridLeft">
+          </div>
+          <div class="toggleGridRight">
+            <p class="gridItem"><strong>2021	Bee Breeders Essay Competition: Modular Architecture</strong>
+              <br>€300 prize  |  second place</p>
+            <p class="gridItem"><strong>2020	Burnham Prize Competition Winner</strong>
+              <br>$1,500 prize  |  team of two</p>
+            <p class="gridItem"><strong>2020	AIA Henry Adams Medal</strong>
+              <br>for academic excellence</p>
+            <p class="gridItem"><strong>2019	College of Architecture Cloud Scholarship</strong>
+              <br>$2,500 scholarship  |  TA position</p>
+            <p class="gridItem"><strong>2019	Farnsworth Redux Design Competition Winner</strong>
+              <br>$5,000 prize  |  team of two</p>	
+            <p class="gridItem"><strong>2018	Benjamin A. Gilman International Scholarship</strong>
+              <br>$4,500 scholarship  |  study abroad</p>
+            <p class="gridItem"><strong>2018 Clinton E. Stryker Distinguished Service Award</strong>
+              <br>for excellence as Resident Advisor</p>
+            <p class="gridItem"><strong>2017 Peterhans Visual Training Award</strong>
+              <br>$1,000 prize  |  team of three</p>
+            <p class="gridItem"><strong>2015	IIT Marvin Camras Scholarship</strong>
+              <br>full tuition scholarship</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-section">
+      <div class="section-head">
+          <p><strong>Contact</strong></p>
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div></div>
+          <div>
+            <p>email: <a href="mailto:blakejhageman@gmail.com" target="_blank" rel="noopener noreferrer">blakejhageman@gmail.com</a><br>
+              linkedin: <a href="https://www.linkedin.com/in/bjhageman/" target="_blank" rel="noopener noreferrer">bjhageman</a><br>
+              instagram: <a href="https://www.instagram.com/blakejhageman/?hl=en" target="_blank" rel="noopener noreferrer">@blakejhageman</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="spacer"></div>
+    <section class="container-section">
+      <div class="section-head">
+      </div>
+      <div class="section-body">
+        <div class="toggleGrid">
+          <div></div>
+          <div>
+            <p>© 2022 by Blake Hageman</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src='/nav.js'></script>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("/nav.html");
+    });
+
+    function toggleDiv(id) { //toggle div using dropdown button
+      document.getElementById(id).classList.toggle('show');    
+      console.log("in function");
+    }
+  </script>
+</body>
+</html>
