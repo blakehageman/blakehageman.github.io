@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="An interactive web map for the Contiguous United States. Explore the data.">
+  <meta name="author" content="Blake Hageman">
+  <title>CONUS Explorer</title>
+  <!--Mapbox GL JS-->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
+  <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
+  <link href='style.css' rel='stylesheet' />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TBP2MYKJD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-3TBP2MYKJD');
+  </script>
+  <!--Mapbox.js-->
+  <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
+  <!--Mapbox GL Geocoder-->
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+    type="text/css"
+  />
+  <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+  <!--D3.js for charts and visualizations-->
+  <script type="text/javascript" src="d3.v5.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="search">
+      <div id="geocoder" class="geocoder"></div>
+      <div id="geocoder-border"></div>
+    </div>
+    <div id="map"></div>
+    <div id="marker" class="marker">
+    </div>
+    <div id="welcome" class="panel">
+      <div id="info" class="card">
+        <h2>CONUS Explorer</h2>
+        <p>Welcome to the CONUS Explorer!<br><br>
+        This web application has been built by Blake Hageman to visualize demographic and housing information for the contiguous United States (CONUS).</p>
+      </div>
+      <div id="instructions" class="card">
+        <h3>Click on the map or search a location to see the data</h3>
+        <p>Currenty, the explorer features publicly available data at the ZIP code level for:
+          <ul id="data-layers">
+            <li>population</li>
+            <li>housing attributes</li>
+            <li>housing costs</li>
+            <li>ownership/vacancy rates</li>
+            <li>utilities</li>
+            <li>environmental health</li>
+            <li>climate</li>
+            <li>transportation</li>
+          </ul>
+        </p>
+        <p>Ctrl + click and drag to view in 3D!</p>
+      </div>
+      <div id="feedback" class="card-no-border">
+        <h3>Let me know what you think</h3>
+        <p>Is there data you want to see that I'm not showing? Let me know so I can add it or help you find it.<br><br><a href="mailto:blakejhageman@gmail.com">Contact me ➔</a></p>
+        <br>
+        <p><strong>© 2025 by Blake Hageman</strong></p>
+        <br>
+      </div>
+    </div>
+    <div id="content" class="panel">
+      <div id="status" class="card">
+        <h2>Currently Viewing</h2>
+        <p id="display-text">Hello World.</h1>
+        <h3 id="current-zip"></h3>
+        <button id="reset">[Clear]</button>
+        <button id="zoom">[Zoom to Location]</button>
+        <br>
+      </div>
+      <div id="population" class="card-group">
+        <div id="population-info" class="card">
+          <h2>Population</h2>
+          <p>Population density gives a rough indication of how rural/urban a location is. The population value shown here is used for all subsequent per capita calculations.</p>
+        </div>
+        <div id="population-density" class="card population-card">
+          <h3>Population Density</h3>
+          <div class="row">
+            <div class="col">
+              <h2 id="population-total-data">—</h2>
+              <p>people</p>
+            </div>
+            <div class="col">
+              <h2 id="population-density-data">—</h2>
+              <p>people per acre</p>
+            </div>
+          </div>
+        </div>
+        <div id="population-age" class="card population-card">
+          <h3>Population Age</h3>
+        </div>
+      </div>
+      <div id="housing-attributes" class="card-group">
+        <div id="housing-attributes-info" class="card">
+          <h2>Housing Attributes</h2>
+          <p>Basic information about housing stock, including its type, value, and year built, give hints to the history of settlement and development in that location.</p>
+        </div>
+        <div id="housing-units" class="card population-card">
+          <h3>Housing Units</h3>
+          <div class="row">
+            <div class="col">
+              <h2 id="housing-total-data">—</h2>
+              <p>housing units</p>
+            </div>
+            <div class="col">
+              <h2 id="housing-units-data">—</h2>
+              <p>units per acre</p>
+            </div>
+          </div>
+        </div>
+        <div id="housing-typology" class="card">
+          <h3>Typology</h3>
+        </div>
+        <div id="housing-age" class="card">
+          <h3>Year Built</h3>
+        </div>
+        <div id="housing-value" class="card">
+          <h3>Property Value</h3>
+        </div>
+      </div>
+      <div id="ownership" class="card-group">
+        <div id="ownership-info" class="card">
+          <h2>Ownership and Occupancy</h2>
+          <p>Ownership and occupancy data often give insight to the behavior of local residents. High ownership rates can indicate a more permanent community, whereas high vacancy rates typically indicate high resident turnover.</p>
+        </div>
+        <div id="renters-vs-owners" class="card">
+          <h3>Ownership Rate</h3>
+          <div class="row">
+            <div class="col">
+              <h2 id="owner-data">—</h2>
+              <p>owner occupied</p>
+            </div>
+            <div class="col">
+              <h2 id="renter-data">—</h2>
+              <p>renter occupied</p>
+            </div>
+          </div>
+        </div>
+        <div id="housing-cost-SMOC" class="card">
+          <h3>Selected Monthly Owner Costs [SMOC]</h3>
+          <p>SMOC show the sum of payments owed monthly on a property including debts, taxes, insurance, utilities, and fees.</p>
+          <h3>SMOC for homes with a mortgage</h3>
+          <div id="SMOC_M-chart-container" class="placeholder"></div>
+          <h3>SMOC for homes without a mortgage</h3>
+          <div id="SMOC_NM-chart-container" class="placeholder"></div>
+        </div>
+        <div id="housing-cost-renters" class="card">
+          <h3>Cost of Rent</h3>
+        </div>
+        <div id="vacancy" class="card">
+          <h3>Vacancy Rate</h3>
+          <div class="row">
+            <div class="col">
+              <h2 id="owner-vacancy-data">—</h2>
+              <p>owner vacancy</p>
+            </div>
+            <div class="col">
+              <h2 id="renter-vacancy-data">—</h2>
+              <p>renter vacancy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="utilities" class="card-group">
+        <div id="utilities-info" class="card">
+          <h2>Utilities</h2>
+        </div>
+        <div id="utilities-internet" class="card">
+          <h3>Internet Access</h3>
+          <p>The data below breaks down internet service by subscription type. Totals exceed 100% as some Americans hold multiple forms of internet access.<br><br>For a more detailed breakdown of service providers, speed, and cost, see the <a href="https://broadbandnow.com/national-broadband-map" rel="noopener noreferrer" target="_blank">National Broadband Map</a>.</p>
+        </div>
+        <div id="utilities-heating" class="card">
+          <h3>House Heating Fuel</h3>
+          <p>Different parts of the country have different needs and means for keeping their homes warm in the colder months. The data below shows how resident heat their homes.</p>
+        </div>
+      </div>
+      <div id="environment" class="card-group">
+        <div id="environment-info" class="card">
+          <h2>Environment</h2>
+        </div>
+        <div id="eqi" class="card">
+          <h3>Environmental Quality Index [EQI]</h3>
+          <p>The EPA <a href="#about-data"> Environmental Equality Index</a> measures overall environmental conditions across five domains.<br><br>Data is rank-ordered across all US counties, where a higher <strong>percentile rank [PR]</strong> indicates worse environmental quality.</p>
+        </div>
+        <div id="whole-body-risk" class="card">
+          <h3>Air Toxicity Health Risks</h3>
+          <p>The EPA <a href="#about-data"> National Air Toxics Assessment data</a> measures health risks due to air toxicity.<br><br>
+          Data is rank-ordered across all US counties, where a higher <strong>percentile rank [PR]</strong> indicates a higher health risk. </p>
+          <div class="row">
+            <div class="col">
+              <h2 id="cancer-risk">—</h2>
+              <p>cancer risk</p>
+            </div>
+            <div class="col">
+              <h2 id="respiratory-risk">—</h2>
+              <p>respiratory risk</p>
+            </div>
+          </div>
+        </div>
+        <div id="climate" class="card">
+          <h3>Climate</h3>
+          <p>Monthly averages for temperature [°F] and precipitation [in] shown below are calculated by the US NOAA.</p>
+          <h3>Temperature</h3>
+          <div id="temp-chart-container" class="placeholder"></div>
+          <h3>Precipitation</h3>
+          <div id="precip-chart-container" class="placeholder"></div>
+        </div>
+        <div id="natural-hazards" class="card">
+          <h3>Natural Hazards</h3>
+        </div>
+        <div id="carbon-footprint" class="card">
+          <h3>Carbon Footprint</h3>
+          <p>The annual average household carbon footprint for all ZIP codes is provided by the University of California Berkeley CoolClimate Network at <a href="https://coolclimate.org/maps" rel="noopener noreferrer" target="_blank">coolclimate.org</a>.</p>
+        </div>
+      </div>
+      <div id="transportation" class="card-group">
+        <div id="transportation-info" class="card">
+          <h2>Transportation</h2>
+        </div>
+        <div id="transport-commute" class="card">
+          <h3>Average Commute</h3>
+          <div class="row">
+            <div class="col">
+              <h2 id="average-commute-data">—</h2>
+              <p>minutes</p>
+            </div>
+            <div class="col">
+              <h2 id="commute-relative-data">—</h2>
+              <p>national average</p>
+            </div>
+          </div>
+        </div>
+        <div id="vehicles" class="card">
+          <h3>Vehicles per Household</h3>
+        </div>
+        <div id="transport-means" class="card">
+          <h3>Transportation to Work</h3>
+        </div>
+        <div id="shipping-centers" class="card">
+          <h3>Shipping Centers</h3>
+          <div class="row">
+            <div class="col">
+              <h2 id="shipping-po">—</h2>
+              <p>Post Office[s]</p>
+            </div>
+            <div class="col">
+              <h2 id="shipping-fe">—</h2>
+              <p>FedEx Location[s]</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h2 id="shipping-ups">—</h2>
+              <p>UPS Location[s]</p>
+            </div>
+            <div class="col">
+              <h2 id="shipping-dhl">—</h2>
+              <p>DHL Location[s]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="learn-more" class="card-group">
+        <div id="about-data" class="card">
+          <h2>Data Attribution</h2>
+        </div>
+        <div class="card">
+          <h3>US Census Bureau</h3>
+          <p>Data for population, housing, ownership and occupancy, utility access, and transportation are tabulated by ZIP Code by the US Census Bureau. The data is from the 2018 American Community Survey 5-Year Data, accessed via <a href="https://data.census.gov/" rel="noopener noreferrer" target="_blank">data.census.gov</a>.</p>
+        </div>
+        <div class="card">
+          <h3>US Environmental Protection Agency</h3>
+          <p>The Environmental Quality Index [EQI] was compiled by the EPA using data from 2000 to 2005. More information on the EQI, including source data and EPA maps, can be found at <a href="https://www.epa.gov/healthresearch/epas-environmental-quality-index-supports-public-health" rel="noopener noreferrer" target="_blank">epa.gov/healthresearch</a>.</p>
+          <p>The National Air Toxics Assessment [NATA] was compiled by the EPA using data from 2014. NATA data and study information is available at <a href="https://www.epa.gov/national-air-toxics-assessment/2014-national-air-toxics-assessment" rel="noopener noreferrer" target="_blank">epa.gov/national-air-toxics-assessment</a>.</p>
+        </div>
+        <div class="card">
+          <h3>US National Oceanic and Atmospheric Administration</h3>
+          <p>1981-2010 Climate Normals are calculated by the US NOAA across its network of monitoring stations. For the CONUS Explorer, data at the ZIP code level uses the nearest station for which both temperature and precipitation normals are available. For the source data and more information, visit <a href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/climate-normals/1981-2010-normals-data" rel="noopener noreferrer" target="_blank">ncdc.noaa.gov</a>.</p>
+        </div>
+        <div class="card">
+          <h3>National Center for Disaster Preparedness</h3>
+          <p>Natural hazard risk data is collected by various US federal agencies and compiled into the US Natural Hazards Index by the Columbia University National Center for Disaster Preparedness. More information on source datasets and indexing methodology can be found at <a href="https://ncdp.columbia.edu/library/mapsmapping-projects/us-natural-hazards-index/" rel="noopener noreferrer" target="_blank">ncdp.columbia.edu</a>.</p>
+        </div>
+        <div class="card">
+          <h3>US Department of Homeland Security</h3>
+          <p>Shipping center data is maintained by the US DHS as part of its Homeland Infrastructure Foundation-Level Data. More information on source datasets can be found at <a href="https://gii.dhs.gov/hifld" rel="noopener noreferrer" target="_blank">gii.dhs.gov/hifld</a>.</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="card">
+          <p><strong>© 2025 by Blake Hageman</strong></p>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--custom js-->
+  <script src='app.js'></script>
+</body>
+</html>

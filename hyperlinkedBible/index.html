@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hyperlinked Bible</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84287979-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-84287979-2');
+    </script>
+</head>
+<body>
+  <div id="info">
+    <div class="nav">
+      <h1 class=sides></h1>
+      <h1 class=center>The Hyperlinked Bible</h1>
+      <h1 class=sides><button id="reset">!</button> <button id="popup">?</button></h1>
+    </div>
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <h1 class="modal-title">About</h1>
+        <div class="modal-text">
+          <h2>Concept</h2>
+          <p>Described as the first hyperlinked text, the Bible has long been considered a foundational artifact of Western thought and culture. For its adherents and adversaries alike, the Bible is widely recognized for its literary authority and compelling narrative architecture.<br><br>This interactive visualization explores the Bible's intricate web of cross-references, suggesting that the recurring themes, characters, places, and imagery of the Bible contribute fundamentally to the richness and complexity of the text. </p>
+          <h2>Controls</h2>
+          <p>This project is intended only for use on large-screen devices, such as a laptop or desktop computer.<br><br>
+            <strong>·</strong> — Click any dot to select verses. Larger dots select verse groups.<br>
+            <strong>!</strong> — Clear the selection.<br><br>
+            Note: for selections with many verses, loading times may increase.
+          </p>
+          <h2>Credits</h2>
+          <p>This interactive web visualization is authored by <a target="_blank" href="https://blakehageman.com/">Blake Hageman</a>. It is inspired by the work 
+            of <a target="_blank" href="https://www.chrisharrison.net/index.php/Visualizations/BibleViz">Chris Harrison</a> and a lecture by 
+            <a target="_blank" href="https://open.spotify.com/episode/0iXuxsSURdRkyzKOoyf2dg?si=9e81acf93250492b">Jordan Peterson</a>. The 
+            cross-reference dataset used is from R.A. Torrey’s Treasury of Scripture Knowledge and was generously
+            provided to the author by <a target="_blank" href="https://viz.bible/remaking-influential-cross-reference-visualization/">
+            Robert Rouse</a>.
+          </p>
+        </div>
+        <br>
+        <button class="close">&times;</button>
+      </div>
+    </div>
+    <p id="verse">click on a node</p>
+  </div>
+  <div class="loading">
+    <p class="loading">loading...</p>
+  </div>
+  <div id="chartContainer"></div>
+  <script type="text/javascript" src = "data.js"></script>
+  <script type="text/javascript" src = "d3.v5.min.js"></script>
+  <script type="text/javascript" src = "app.js"></script>
+</body>
+</html>
